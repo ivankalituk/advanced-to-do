@@ -45,7 +45,7 @@ function AddTask(props){
 
     return(
         <div className="AddTask">
-            <input type="text" ref={inputRef} onKeyUp = {(event) => {onEnterUp(event)}}/>
+            <input type="text" ref={inputRef} onKeyUp = {(event) => {onEnterUp(event)}} className= "input_text"/>
             <button className="add_btn" onClick={onAddClick}>+</button>
             <button className="add_btn" onClick={()=>{inputRef.current.value = '';}}>X</button>
         </div>

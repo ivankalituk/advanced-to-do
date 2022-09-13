@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+.AddTask{
+
+
+    .add_btn{
+        margin-left: 2px;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        border: none;
+        background-color: #5714F5;
+        color: white;
+    }
+
+    .input_text{
+        width: 250px;
+
+        font-family: 'Inter', sans-serif;
+        // color: white;
+        transition: 0.5s;
+        border: none;
+        background-color: #8383f0;
+        height: 25px;
+        font-size: 16px;
+        border-radius: 5px;
+        border-bottom: 2px solid gray;
+    }
+
+    .input_text:active, :hover, :focus{
+        outline: 0;
+        outline-offset: 0;
+        box-shadow: none;
+    }
+
+    .input_text:focus{
+        transition: 0.5s;
+        border-bottom: 2px solid #5714F5;
+    }
+
+}

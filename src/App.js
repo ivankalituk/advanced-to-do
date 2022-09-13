@@ -9,7 +9,7 @@ function App() {
   let urlMain = 'https://631f519b22cefb1edc48f3ff.mockapi.io/MainTasks';  //юрл задач-отцов
   let urlSecond = 'https://631f519b22cefb1edc48f3ff.mockapi.io/SecTasks'; //юрл дочерних задач
 
-  let [changeActive, setChangeActive] = React.useState('true')
+  let [changeActive, setChangeActive] = React.useState(false)
 
   let [mainTasks, setMainTasks] = React.useState([]);
   let [secondTasks, setSecondTasks] = React.useState([])
@@ -43,7 +43,7 @@ function App() {
       <header>
         <div className="header_inner">
           <div className="heading">your tasks</div>
-          <button onClick={()=>{setChangeActive(!changeActive)}}>Change</button>
+          <button onClick={()=>{setChangeActive(!changeActive)}}>Change Tasks</button>
         </div>
       </header>
 
