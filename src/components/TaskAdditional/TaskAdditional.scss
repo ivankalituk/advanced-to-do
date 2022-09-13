@@ -1,6 +1,7 @@
 .secondary_task{
 
-    animation: 0.5s show ease;
+    animation: showTask 0.7s ease;
+    
 
     margin: 0 0 0 10px;
     padding-top: 5px;
@@ -46,7 +47,7 @@
     }
 }
 
-@keyframes show {
+@keyframes shownTask {
     from{  
         transform: translateY(-100%);
         opacity: 0;}
