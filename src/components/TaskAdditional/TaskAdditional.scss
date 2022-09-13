@@ -1,0 +1,57 @@
+.secondary_task{
+
+    animation: 0.5s show ease;
+
+    margin: 0 0 0 10px;
+    padding-top: 5px;
+
+    border-left: 1px gray solid;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .Task_content{
+
+        max-width: 80%;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        
+        .tasktext{
+            margin-left: 5px;
+            flex: 1 1 auto;
+            // word-break: break-all;
+        }
+
+        .CheckBox{
+            color: #FC7A53;
+        }
+    }
+
+    .changebtns{
+        display: flex;
+
+        .change_btn{
+            background-color: #FC7A53;
+            border: none;
+
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+        }
+
+        .change_btn + .change_btn{
+            margin-left: 2px;
+        }
+    }
+}
+
+@keyframes show {
+    from{  
+        transform: translateY(-100%);
+        opacity: 0;}
+    to  {
+        transform: translateY( 0%);
+        opacity: 1;}
+}

@@ -1,23 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import axios from 'axios';
+
+import './App.scss'
+import Task from './components/Task/Task';
+import AddTask from './components/AddTask/AddTask';
 
 function App() {
+  let urlMain = 'https://631f519b22cefb1edc48f3ff.mockapi.io/MainTasks';  //юрл задач-отцов
+  let urlSecond = 'https://631f519b22cefb1edc48f3ff.mockapi.io/SecTasks'; //юрл дочерних задач
+
+  let [changeActive, setChangeActive] = React.useState('true')
+
+  let [mainTasks, setMainTasks] = React.useState([]);
+  let [secondTasks, setSecondTasks] = React.useState([])
+
+  // получение массивов
+  React.useEffect(() => {
+    allUpdate()
+  },[])
+
+  let getMainTasks = async() => {
+    await axios.get(urlMain).then(res =>{
+      setMainTasks(res.data);
+    })
+  }
+
+  let getSecTasks = async() => {
+    await axios.get(urlSecond).then(res =>{
+      setSecondTasks(res.data);
+    })
+  }
+
+  //колбэк функция обновления всех массивов
+  let allUpdate = () => {
+    getMainTasks();
+    getSecTasks();
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+      <header>
+        <div className="header_inner">
+          <div className="heading">your tasks</div>
+          <button onClick={()=>{setChangeActive(!changeActive)}}>Change</button>
+        </div>
       </header>
+
+      {mainTasks.map((obj) => (<Task 
+        active = {changeActive}
+        key = {obj.id} 
+        content = {obj.content} 
+        id = {obj.id} 
+        secondTasks = {secondTasks} 
+        check = {obj.check} 
+        urlMain = {urlMain}
+        urlSecond = {urlSecond}
+        allUpdate = {allUpdate}
+      />))}
+
+      <div className="addTask" style={changeActive? {display: "block"} : {display: "none"}}>
+        <AddTask 
+          isFather = {true}
+          allUpdate = {allUpdate} 
+          urlMain = {urlMain} 
+          urlSecond = {urlSecond} 
+          ctive = {changeActive}
+        />
+      </div>
     </div>
   );
 }
